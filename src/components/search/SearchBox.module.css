@@ -1,0 +1,23 @@
+.form__group {
+    margin: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex: 2;
+}
+
+.form__control {
+    width: 30em;
+    font: inherit;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: none;
+    background-color: rgba(196, 169, 228, 1);
+    color: rgba(36, 36, 36, 1);
+}
+
+
+.form__control::placeholder {
+    color: rgba(255, 255, 255, 0.87);
+    opacity: 0.5;
+}

@@ -1,14 +1,22 @@
 import { FC } from "react";
-import { Product } from "../../types/Product.type";
+
+import Button from "../button/Button";
+
+import { CardProps } from "./Cart.types";
+
 import classes from "./Card.module.css";
 
-const Card: FC<Partial<Product>> = ({ title, price, image, onAddToCart }) => {
+const Card: FC<CardProps> = ({ product, actionName, onClick }) => {
+  const { image, title, price } = product;
   return (
     <div className={classes.card}>
-      <img src={image} alt={title} />
+      <img src={image} alt={title} className={classes.image} />
       <h3>{title}</h3>
-      <p>$:{price}</p>
-      <button onClick={onAddToCart}>Add to Cart</button>
+      <div className={classes.card__footer}>
+        <p>$:{price}</p>
+
+        <Button onClick={onClick}>{actionName}</Button>
+      </div>
     </div>
   );
 };

@@ -1,10 +1,12 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { LayoutProps } from "./Layout.types";
-import { navLinks } from "./NavLinks";
-import { NavLink } from "./NavLink.types";
 
-const Layout: FC<LayoutProps> = ({ children }) => {
+import { NavLink } from "./NavLink.types";
+import { Children } from "../types/Children.type";
+
+import { navLinks } from "./NavLinks";
+
+const Layout: FC<Children> = ({ children }) => {
   return (
     <div>
       <header>

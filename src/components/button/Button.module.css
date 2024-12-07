@@ -1,0 +1,17 @@
+.btn {
+    display: inline-flex;
+    align-items: center;
+    flex: 1;
+    border: 0;
+    margin: 1em 0;
+    padding: 0.5rem;
+    border-radius: 6px;
+    text-transform: capitalize;
+
+    text-align: center;
+    font-size: inherit;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
