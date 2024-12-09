@@ -9,6 +9,7 @@ This is a simple **Product Catalog** application where users can browse products
 ## Getting started
 
 - Clone this repository and run `npm install` to install the dependencies.
+-  **!!!Checkout develop branch**.
 - Run `npm run dev` to start the development server.
 
 ## To Do:
