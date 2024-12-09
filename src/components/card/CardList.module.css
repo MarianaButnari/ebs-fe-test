@@ -1,5 +1,20 @@
 .list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr;
     gap: 1rem;
+}
+
+/* TABLET PORTRAIT */
+@container (width >=37.5em) {
+    .list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* DESKTOP */
+@container (width >=75em) {
+
+    .list {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }

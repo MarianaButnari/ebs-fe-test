@@ -1,11 +1,10 @@
 .btn {
     display: inline-flex;
     align-items: center;
-    flex: 1;
     border: 0;
-    margin: 1em 0;
-    padding: 0.5rem;
-    border-radius: 6px;
+    margin: var(--space-sm);
+    padding: var(--space-xs);
+    border-radius: var(--space-xxs);
     text-transform: capitalize;
 
     text-align: center;
@@ -13,5 +12,30 @@
 
     &:hover {
         cursor: pointer;
+    }
+}
+
+.outline {
+    background-color: var(--accent-color);
+
+    &:hover {
+        color: var(--light-color);
+    }
+
+}
+
+.light {
+    background-color: var(--light-color);
+
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+
+/* TABLET PORTRAIT */
+@container (width >=37.5em) {
+    .btn {
+        flex-basis: 13em;
     }
 }

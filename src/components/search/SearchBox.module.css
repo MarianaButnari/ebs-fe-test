@@ -1,23 +1,27 @@
 .form__group {
-    margin: 1em;
+    margin: var(--space-sm);
     display: flex;
     align-items: center;
     justify-content: end;
-    flex: 2;
 }
 
 .form__control {
     width: 30em;
     font: inherit;
-    padding: 0.5rem;
-    border-radius: 6px;
+    padding: var(--space-xs);
+    border-radius: var(--space-xxs);
     border: none;
-    background-color: rgba(196, 169, 228, 1);
-    color: rgba(36, 36, 36, 1);
+    background-color: var(--accent-color);
 }
 
 
 .form__control::placeholder {
-    color: rgba(255, 255, 255, 0.87);
-    opacity: 0.5;
+    color: var(--dark--color);
+}
+
+/* TABLET PORTRAIT */
+@container (width >=37.5em) {
+    .form__group {
+        margin-right: 0;
+    }
 }

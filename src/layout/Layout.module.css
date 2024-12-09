@@ -1,0 +1,28 @@
+.navbar {
+    padding: var(--space-sm);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: end;
+}
+
+.nav__link {
+    color: inherit;
+    padding: 0 var(--space-xxs);
+
+    &:hover {
+        color: var(--accent-color);
+    }
+}
+
+.main__container {
+    /* navbar has 64 px */
+    min-height: calc(100vh - 64px);
+}
+
+.footer {
+    padding: var(--space-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

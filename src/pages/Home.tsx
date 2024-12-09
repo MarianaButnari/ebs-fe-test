@@ -1,20 +1,33 @@
 import { ChangeEvent, FC, useEffect, useState } from "react";
 
 import SearchBox from "../components/search/SearchBox";
-
-import CardList from "../components/card/CardList";
-import { Product } from "../types/Product.type";
 import Button from "../components/button/Button";
-import { SortDirection } from "../components/card/Cart.types";
+import CardList from "../components/card/CardList";
+
+import { SortDirection } from "../components/card/Card.types";
+import { Product } from "../types/Product.type";
+
+import classes from "./Home.module.css";
+
 const Home: FC = () => {
   // PRODUCTS
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("https://fakestoreapi.com/products");
-      const data = await response.json();
-      setProducts(data);
+      try {
+        setLoading(true);
+        const response = await fetch("https://fakestoreapi.com/products");
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error:", error);
+      } finally {
+        setLoading(false);
+      }
     };
+
     fetchData();
   }, []);
 
@@ -24,7 +37,7 @@ const Home: FC = () => {
     setSearchField(event.target.value);
   }
   const filteredProducts = products.filter((product: Product) => {
-    return product.title.toLowerCase().includes(searchField.toLowerCase());
+    return product.category.toLowerCase().includes(searchField.toLowerCase());
   });
 
   // SORT
@@ -40,14 +53,7 @@ const Home: FC = () => {
 
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "stretch",
-          justifyContent: "end",
-        }}
-      >
+      <div className={classes.actions}>
         <SearchBox searchChange={searchChange}></SearchBox>
         <Button onClick={toggleSortOrder}>
           {sortDirection === null
@@ -58,7 +64,14 @@ const Home: FC = () => {
         </Button>
       </div>
       <hr></hr>
-      <CardList products={filteredProducts} sortDirection={sortDirection} />
+
+      {filteredProducts.length ? (
+        <CardList products={filteredProducts} sortDirection={sortDirection} />
+      ) : (
+        <h2 className={classes.message}>
+          {loading ? "Loading..." : "No product found"}
+        </h2>
+      )}
     </>
   );
 };

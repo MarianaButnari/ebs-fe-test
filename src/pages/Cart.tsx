@@ -1,35 +1,59 @@
-import React from "react";
+import { FC } from "react";
+
 import { useCart } from "../context/CartContext";
-import { Product } from "../types/Product.type";
 import Button from "../components/button/Button";
-const Cart: React.FC = () => {
-  const { cart, removeFromCart } = useCart();
+
+import { Product } from "../types/Product.type";
+import classes from "./Cart.module.css";
+const Cart: FC = () => {
+  const { cart, addToCart, removeFromCart, clearCart } = useCart();
 
   const totalPrice = cart.reduce(
-    (acc, item) => acc + item.price,
-    // (acc, item) => acc + item.price * item.quantity,
+    (acc, item) => acc + item.price * item.quantity,
     0
   );
 
   const formattedTotalPrice = `$${totalPrice.toFixed(2)}`;
   return (
     <div>
-      {cart.length === 0 ? (
-        <p>No items in cart</p>
-      ) : (
-        <ul>
-          {cart.map((product: Product) => (
-            <li key={product.id}>
-              {product.title} - ${product.price}
-              <Button onClick={() => removeFromCart(product.id)}>Remove</Button>
-            </li>
-          ))}
+      <hr></hr>
+      {cart.length === 0 && (
+        <h2 className={classes.message}>No items in cart!</h2>
+      )}
+      {cart.length > 0 && (
+        <ul className={classes.cart__items}>
+          {cart.map((product: Product) => {
+            const formattedPrice = `$${product.price.toFixed(2)}`;
+
+            return (
+              <li key={product.id} className={classes.cart__product}>
+                <div>
+                  <span>{product.title}</span>
+                  <span> ({formattedPrice})</span>
+                </div>
+                <div className={classes.cart__actions}>
+                  <Button
+                    onClick={() => removeFromCart(product.id)}
+                    variant="light"
+                  >
+                    -
+                  </Button>
+                  <span>{product.quantity}</span>
+                  <Button onClick={() => addToCart(product)} variant="light">
+                    +
+                  </Button>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       )}
-
-      <p id="cart-total-price">
-        Cart Total: <strong>{formattedTotalPrice}</strong>
-      </p>
+      <div className={classes.cart__total}>
+        <p>
+          Cart Total: <strong>{formattedTotalPrice}</strong>
+        </p>
+        <Button onClick={() => clearCart()}>Clear Cart</Button>
+      </div>
     </div>
   );
 };

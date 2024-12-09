@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import Button from "../button/Button";
 
-import { CardProps } from "./Cart.types";
+import { CardProps } from "./Card.types";
 
 import classes from "./Card.module.css";
 
@@ -15,7 +15,9 @@ const Card: FC<CardProps> = ({ product, actionName, onClick }) => {
       <div className={classes.card__footer}>
         <p>$:{price}</p>
 
-        <Button onClick={onClick}>{actionName}</Button>
+        <Button onClick={onClick} variant="light">
+          {actionName}
+        </Button>
       </div>
     </div>
   );

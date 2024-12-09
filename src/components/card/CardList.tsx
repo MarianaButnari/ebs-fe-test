@@ -3,7 +3,7 @@ import { FC } from "react";
 import { useCart } from "../../context/CartContext";
 
 import { Product } from "../../types/Product.type";
-import { CardListProps } from "./Cart.types";
+import { CardListProps } from "./Card.types";
 
 import Card from "./Card";
 

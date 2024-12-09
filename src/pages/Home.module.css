@@ -1,0 +1,21 @@
+/* MOBILE */
+.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
+
+}
+
+.message {
+    text-align: center;
+}
+
+/* TABLET PORTRAIT */
+@container (width >=37.5em) {
+    .actions {
+        flex-direction: row;
+        justify-content: end;
+
+    }
+}
