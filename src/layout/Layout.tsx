@@ -18,6 +18,7 @@ const Layout: FC<Children> = ({ children }) => {
               to={link.to}
               key={`${link.name}-${index}`}
               className={classes.nav__link}
+              data-testid={`${link.name}-${index}`}
             >
               {link.name}
             </Link>
