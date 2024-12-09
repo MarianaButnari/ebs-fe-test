@@ -1,7 +1,7 @@
 import { FC, createContext, useState, useContext } from "react";
 
 import { Children } from "../types/Children.type";
-import { Product } from "../types/Product.type";
+import { Product } from "../types/Product.types";
 
 interface CartContextType {
   cart: Product[];

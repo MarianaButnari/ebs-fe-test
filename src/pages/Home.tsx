@@ -1,11 +1,8 @@
 import { ChangeEvent, FC, useEffect, useState } from "react";
 
 import SearchBox from "../components/search/SearchBox";
-import Button from "../components/button/Button";
-import CardList from "../components/card/CardList";
-
-import { SortDirection } from "../components/card/Card.types";
-import { Product } from "../types/Product.type";
+import CardList from "../components/productList/ProductList";
+import { Product } from "../types/Product.types";
 
 import classes from "./Home.module.css";
 
@@ -40,33 +37,15 @@ const Home: FC = () => {
     return product.category.toLowerCase().includes(searchField.toLowerCase());
   });
 
-  // SORT
-  const [sortDirection, setSortDirection] = useState<SortDirection>(null);
-  const toggleSortOrder = () => {
-    setSortDirection((prevDirection: SortDirection) => {
-      if (prevDirection === null) {
-        return "asc";
-      }
-      return prevDirection === "asc" ? "desc" : "asc";
-    });
-  };
-
   return (
     <>
       <div className={classes.actions}>
         <SearchBox searchChange={searchChange}></SearchBox>
-        <Button onClick={toggleSortOrder}>
-          {sortDirection === null
-            ? "Sort by Price"
-            : sortDirection === "asc"
-            ? "Sort by Price: Ascending"
-            : "Sort by Price: Descending"}
-        </Button>
       </div>
       <hr></hr>
 
       {filteredProducts.length ? (
-        <CardList products={filteredProducts} sortDirection={sortDirection} />
+        <CardList products={filteredProducts} />
       ) : (
         <h2 className={classes.message}>
           {loading ? "Loading..." : "No product found"}

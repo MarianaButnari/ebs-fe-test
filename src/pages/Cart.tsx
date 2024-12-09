@@ -3,7 +3,7 @@ import { FC } from "react";
 import { useCart } from "../context/CartContext";
 import Button from "../components/button/Button";
 
-import { Product } from "../types/Product.type";
+import { Product } from "../types/Product.types";
 import classes from "./Cart.module.css";
 const Cart: FC = () => {
   const { cart, addToCart, removeFromCart, clearCart } = useCart();
@@ -27,6 +27,7 @@ const Cart: FC = () => {
 
             return (
               <li key={product.id} className={classes.cart__product}>
+                <img src={product.image} alt={product.title} className={classes.image} />
                 <div>
                   <span>{product.title}</span>
                   <span> ({formattedPrice})</span>

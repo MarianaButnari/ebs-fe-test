@@ -2,8 +2,7 @@ import { FC } from "react";
 
 import Button from "../button/Button";
 
-import { CardProps } from "./Card.types";
-
+import { CardProps } from "./Card.type";
 import classes from "./Card.module.css";
 
 const Card: FC<CardProps> = ({ product, actionName, onClick }) => {

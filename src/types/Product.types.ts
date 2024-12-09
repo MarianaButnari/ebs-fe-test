@@ -10,3 +10,9 @@ export interface Product {
   rating: Rating;
   quantity: number;
 }
+
+export type SortDirection = "asc" | "desc" | null;
+
+export interface ProductListProps {
+  products: Product[];
+}
