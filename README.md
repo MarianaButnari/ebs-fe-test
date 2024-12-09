@@ -20,3 +20,4 @@ This is a simple **Product Catalog** application where users can browse products
 - [ ] Install the dependencies using `npm install`.
 - [ ] **!!!Checkout develop branch**.
 - [ ] Start the development server using `npm run dev`.
+- [ ] Run `npm run test` to run test.
